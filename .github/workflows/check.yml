@@ -6,13 +6,16 @@ on:
             - main
 
 jobs:
-    check:
+    test:
         runs-on: ubuntu-latest
+        env:
+          DATA: |
+            A=1
+            B=2
         steps:
-            - name: Step 1
-              run: exit 0
-            - name: Step 2
-              run: exit 1
-            - name: Step 3
-              if: ${{ always() }}
-              run: exit 0
+          - uses: actions/checkout@v4
+          - uses: actions/setup-python@v5
+            with:
+              python-version: '3.x'
+          - run: python main.py
+          
