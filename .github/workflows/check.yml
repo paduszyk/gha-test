@@ -18,4 +18,12 @@ jobs:
             with:
               python-version: '3.x'
           - run: python main.py
+    job-a:
+        runs-on: ubuntu-latest
+        strategy:
+            matrix:
+                a: [1, 2]
+        steps:
+            - run: echo ${{ matrix.a }}
+
           
